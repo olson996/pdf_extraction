@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block title %}Login{% endblock %} {% block head %}
+{{ super() }}
+<style type="text/css">
+  .important {
+    color: #336699;
+  }
+</style>
+{% endblock %} {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      
+    </div>
+    <div class = "col">
+        <h1>{{ title }}</h1>
+        <hr>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.username.label }}<br>
+                {{ form.username(size=32) }}<br>
+                {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.password.label }}<br>
+                {{ form.password(size=32) }}<br>
+                {% for error in form.password.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+            <p>{{ form.submit() }}</p>
+        </form>
+        <hr>
+        <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+    </div>
+    <div class="col">
+              
+
+    </div>
+  </div>
+</div>
+{% endblock %}
